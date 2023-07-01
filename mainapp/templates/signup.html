@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Sign Up</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-8 p-2 contform">
+            <div class="product-intro">
+                <h1>Sign <span>Up</span></h1>
+                <p>Ecommerce is one way people buy and sell things in retail.</p>
+            </div>
+
+            {% for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+            <form method="post" id="frm">
+                {% csrf_token %}
+                <div class="container">
+                    <input type="text" placeholder="Enter Name" name="name"
+                        class="form__input" required>
+                    <label for="name" class="form__label"><b>Name</b></label>
+
+                    <input type="text" placeholder="Enter Username"
+                        name="username"
+                        class="form__input" required>
+                    <label for="username" class="form__label"><b>Username</b></label>
+                    <input type="email" placeholder="Enter Email"
+                        name="email"
+                        class="form__input" required>
+                    <label for="email" class="form__label"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Mobile"
+                        name="phone"
+                        class="form__input" id="mobile" required>
+                    <label for="phone" class="form__label"><b>Mobile</b></label>
+
+                    <input type="password" placeholder="Enter Password"
+                        name="password" class="form__input" id="password"
+                        required>
+                    <label for="psw" class="form__label"><b>Password</b></label>
+
+                    <input type="password" placeholder="Enter Confirm Password"
+                        name="cpassword" class="form__input" id="cpassword"
+                        required>
+                    <label for="cpassword" class="form__label"><b>Confirm
+                            Password</b></label>
+
+                    <label for="accounttype"><b>Account Type :</b></label>
+                    <select name="actype" class="form-control">
+                        <option value="seller">Seller</option>
+                        <option value="buyer">Buyer</option>
+                    </select>
+                    <button type="submit" class="button">SignUp</button>
+                    <a href="{% url 'login' %}">Already User? Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

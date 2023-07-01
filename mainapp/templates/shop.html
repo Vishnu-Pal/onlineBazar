@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Shop</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div
+            class="col-md-2">
+            <h5 class="background text-light text-center p-2 mt-2">Menu</h5>
+            <div class="list-group">
+                <h6 class="background text-light text-center p-2 mt-2">Main
+                    Category</h6>
+                <a href="/shop/All/{{sc}}/{{br}}/"
+                    class="list-group-item list-group-item-action">All</a>
+                {% for i in Maincategory %}
+                <a href="/shop/{{i.name}}/{{sc}}/{{br}}/"
+                    class="list-group-item list-group-item-action">{{i.name}}</a>
+                {% endfor %}
+
+            </div>
+            <div class="list-group">
+                <h6 class="background text-light text-center p-2 mt-2">Sub
+                    Category</h6>
+                <a href="/shop/{{mc}}/All/{{br}}/"
+                    class="list-group-item list-group-item-action">All</a>
+                {% for i in Subcategory %}
+                <a href="/shop/{{mc}}/{{i.name}}/{{br}}/"
+                    class="list-group-item list-group-item-action">{{i.name}}</a>
+                {% endfor %}
+
+            </div>
+            <div class="list-group">
+                <h6 class="background text-light text-center p-2 mt-2">Brand</h6>
+                <a href="/shop/{{mc}}/{{sc}}/All/"
+                    class="list-group-item list-group-item-action">All</a>
+                {% for i in Brand %}
+                <a href="/shop/{{mc}}/{{sc}}/{{i.name}}/"
+                    class="list-group-item list-group-item-action">{{i.name}}</a>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div
+            class="col-md-10 ">
+            <div class="product-intro">
+                <h1>Shop <span>Section</span></h1>
+                <p>Ecommerce is one way people buy and sell things in retail.</p>
+            </div>
+
+            <div class="row">
+                {% for i in Products %}
+                <div
+                    class="col-lg-3 col-md-4 col-sm-6 col-12 mt-3 mb-3">
+                    <div class="card bg-light mt-3">
+                        <span class="card-text discount">{{i.discount}}% off</span>
+                        <a href="/singleProduct/{{i.id}}/"><img
+                                src="{{i.pic1.url}}"
+                                class="card-img-top"
+                                height="250px"></a>
+                        <div class="card-body">
+                            <h5 class="card-title" style="height:40px">{{i.name}}</h5>
+                            <p class="card-text" style="margin-bottom: 0px;">Price
+                                &#8377;
+                                <del>{{i.baseprice}}</del>
+                                {{i.finalprice}}</p>
+                            <!-- <p class="card-text">{{i.discount}}%</p> -->
+                            <!-- <a href="/singleProduct/{{i.id}}/"
+                            class="btn text-light background w-100">Add
+                            to Cart</a> -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

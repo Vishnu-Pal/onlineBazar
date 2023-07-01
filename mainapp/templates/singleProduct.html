@@ -1,0 +1,150 @@
+{% extends "index.html" %}
+{% load static %}
+{% load product %}
+{% block title %}
+<title>Online Bazar | Single Product</title>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade"
+                data-bs-ride="carousel">
+                <div class="carousel-inner img-thumbnail">
+                    <div class="carousel-item active">
+                        <img src="{{Product.pic1.url}}" height="450px"
+                            class="d-block w-100"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{Product.pic2.url}}" height="450px"
+                            class="d-block w-100"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{Product.pic3.url}}" height="450px"
+                            class="d-block w-100"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{Product.pic4.url}}" height="450px"
+                            class="d-block w-100"
+                            alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="d-flex justify-content-between mt-2 img-thumbnail">
+                <img src="{{Product.pic1.url}}" height="150px" width="24%"
+                    alt="...">
+                <img src="{{Product.pic2.url}}" height="150px" width="24%"
+                    alt="...">
+                <img src="{{Product.pic3.url}}" height="150px" width="24%"
+                    alt="...">
+                <img src="{{Product.pic4.url}}" height="150px" width="24%"
+                    alt="...">
+            </div>
+        </div>
+        <div class="col-md-8 contform marginSingleProduct"
+            style>
+            <div class="product-intro">
+                <h1>Product <span>Section</span></h1>
+                <p>Ecommerce is one way people buy and sell things in retail.</p>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Name : </th>
+                    <td>{{Product.name}}</td>
+                </tr>
+                <tr>
+                    <th>Main Category : </th>
+                    <td>{{Product.maincategory}}</td>
+                </tr>
+                <tr>
+                    <th>Sub Category : </th>
+                    <td>{{Product.subcategory}}</td>
+                </tr>
+                <tr>
+                    <th>Brand : </th>
+                    <td>{{Product.brand}}</td>
+                </tr>
+                <tr>
+                    <th>Stock : </th>
+                    <td>{{Product.stock}}</td>
+                </tr>
+                <tr>
+                    <th>Base Price : </th>
+                    <td>&#8377; <del>{{Product.baseprice}}</del></td>
+                </tr>
+                <tr>
+                    <th>Discount : </th>
+                    <td>{{Product.discount}}%</td>
+                </tr>
+                <tr>
+                    <th>Final Price : </th>
+                    <td>{{Product.finalprice}}</td>
+                </tr>
+                <form action="/add-to-cart/" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <th>Color : </th>
+                        <td>
+                            <select class="form-select" name="color"
+                                style="width:100px;">
+                                {% for i in color %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Size : </th>
+
+                        <td>
+                            <select class="form-select" name="size"
+                                style="width: 100px;">
+                                {% for i in size %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description : </th>
+                        <td>{{Product.discription}}</td>
+                    </tr>
+                    <tr>
+                        <input type="hidden" name="pid" value="{{Product.id}}">
+                        {% if request|stock:Product.stock %}
+                        <th colspan="2"><button type="submit"
+                                class="btn button">Add to
+                                Cart</button></th>
+                        {% else %}
+                        <th colspan="2"><button type="submit"
+                                class="btn button" disabled>Add to
+                                Cart</button></th>
+                        {% endif %}
+                    </tr>
+                </form>
+                <tr>
+                    <th colspan="2"><a href="/addToWishlist/{{Product.id}}/"
+                            class="btn button">Add to
+                            Wishlist</a></th>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

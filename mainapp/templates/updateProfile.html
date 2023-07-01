@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Upadete Profile</title>
+{% endblock %}
+
+{% block body %}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-5 border-right">
+            <div
+                class="d-flex flex-column align-items-center text-center p-3 py-5">
+                {% if User.pic %}
+                <img src="{{User.pic.url}}" class="rounded-circle mt-5"
+                    width="150px" height="150px">
+                {% else %}
+                <img src="{% static 'images/user.webp' %}"
+                    class="rounded-circle mt-5"
+                    width="150px">
+                {% endif %}
+
+                <span class="font-weight-bold">{{User.name}}</span>
+                <span class="text-black-50">{{User.email}}</span>
+                <span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-7 p-2 contmap mb-3">
+            <div class="product-intro">
+                <h1>Update <span>Profile</span></h1>
+                <p>Ecommerce is one way people buy and sell things in retail.</p>
+            </div>
+
+            <form method="post" id="frm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="container">
+                    <label for="name"><b>Name :</b></label>
+                    <input type="text" placeholder="Enter Name" name="name"
+                        required class="inpt" value="{{User.name}}">
+
+                    <label for="email"><b>Email :</b></label>
+                    <input type="email" placeholder="Enter Email"
+                        name="email"
+                        required class="inpt" value="{{User.email}}"><br>
+                    <label for="phone"><b>Mobile :</b></label>
+                    <input type="text" placeholder="Enter Mobile"
+                        name="phone"
+                        required class="inpt" value="{{User.phone}}">
+                    <label for="house"><b>Address Line 1. :</b></label>
+                    <input type="text" placeholder="Enter House No"
+                        name="addressline1" class="inpt"
+                        value="{{User.addressline1}}">
+                    <label for="street"><b>Address Line 2 :</b></label>
+                    <input type="text" placeholder="Enter Street No"
+                        name="addressline2" class="inpt"
+                        value="{{User.addressline2}}">
+                    <label for="locality"><b>Address Line 3 :</b></label>
+                    <input type="text" placeholder="Enter Locality"
+                        name="addressline3" class="inpt"
+                        value="{{User.addressline3}}">
+                    <label for="pin"><b>Pin Code :</b></label>
+                    <input type="text" placeholder="Enter Pin"
+                        name="pin" class="inpt" value="{{User.pin}}">
+                    <label for="city"><b>City :</b></label>
+                    <input type="text" placeholder="Enter City"
+                        name="city" class="inpt" value="{{User.city}}">
+                    <label for="state"><b>State :</b></label>
+                    <input type="text" placeholder="Enter State"
+                        name="state" class="inpt" value="{{User.state}}">
+                    <label for="image"><b>Image :</b></label>
+                    <input type="file" placeholder="Enter Image"
+                        name="pic" class="inpt form-control"
+                        value="{{User.pic}}">
+
+                    <button type="submit" class="button">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

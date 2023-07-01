@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Contact Us</title>
+{% endblock %}
+
+{% block body %}
+<!-- <img src="{% static 'images/contact.jpg' %}" alt width="100%"
+                height="100%"> -->
+<section class="contact section">
+    <div class="container">
+        <div class="row">
+            <div class="section-title padd-15">
+                <h2>Contact Me</h2>
+            </div>
+        </div>
+        <h3 class="contact-title padd-15">Have you any Question ?</h3>
+        <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
+        <div class="row">
+            <!--- ====== contact info item start ====== --->
+            <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-phone"></i></div>
+                <h4>Call Us On</h4>
+                <p>+91 9990495419</p>
+            </div>
+            <!--- ====== contact info item ent ====== --->
+
+            <!--- ====== contact info item start ====== --->
+            <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-map-marker"></i></div>
+                <h4>Office</h4>
+                <p>Gwalior (Madhya Pradesh)</p>
+            </div>
+            <!--- ====== contact info item ent ====== --->
+
+            <!--- ====== contact info item start ====== --->
+            <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>vishnupal@gmail.com</p>
+            </div>
+            <!--- ====== contact info item ent ====== --->
+
+            <!--- ====== contact info item start ====== --->
+            <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-globe"></i></div>
+                <h4>Website</h4>
+                <p>www.Onlinebazar.com</p>
+            </div>
+            <!--- ====== contact info item end ====== --->
+
+        </div>
+        <!--- ====== contact form end ====== --->
+    </div>
+</section>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="contmap">
+                <h3 class="contact-title padd-15">OFFICE ADDRESS</h3>
+                <h4 class="contact-sub-title padd-15">COME OFFICE WITH EASY WITH
+                    MAP</h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229085.18221704822!2d78.02608206937565!3d26.214369957855702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c5d1792291fb%3A0xff4fb56d65bc3adf!2sGwalior%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1687952165604!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0;"
+                    allowfullscreen
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 margin">
+            <div class="contform">
+
+                {% for i in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{i}}
+                </div>
+                {% endfor %}
+                <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
+                <h4 class="contact-sub-title padd-15">I'M VERY RISPONSIVE TO
+                    MESSAGE</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Name" name="name"
+                        required class="form__input">
+                    <label class="form__label" for="name"><b>Name</b></label>
+
+                    <input type="text" placeholder="Enter Email"
+                        name="email"
+                        required class="form__input">
+                    <label class="form__label" for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Mobile"
+                        name="phone"
+                        required class="form__input">
+                    <label class="form__label" for="phone"><b>Mobile</b></label>
+                    <input type="text" placeholder="Subject"
+                        name="subject"
+                        required class="form__input">
+                    <label class="form__label" for="subject"><b>Subject</b></label>
+                    <label for="message"><b>Message :</b></label>
+                    <textarea name="message" id rows="3" class="form-control"
+                        placeholder="Message"></textarea>
+
+                    <button type="submit" class="button mt-3">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,258 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Add Product</title>
+{% endblock %}
+
+{% block body %}
+<div class="product-intro">
+  <h1>Add <span>Product</span></h1>
+  <p>Ecommerce is one way people buy and sell things in retail.</p>
+</div>
+<div class="container">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Name : </label>
+      <input type="text" class="form-control" name="name"
+        placeholder="Enter Product Name" required><br>
+      <!-- <button class="btn background btn-light w-100">Submit</button> -->
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <h5>Main Category</h5>
+        <select class="form-select" name="maincategory">
+          {% for i in MainCategory %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <h5>Sub Category</h5>
+        <select name="subcategory" class="form-select">
+          {% for i in SubCategory %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <h5>Brand</h5>
+        <select name="brand" class="form-select">
+          {% for i in Brand %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <h5>Stock</h5>
+        <select name="stock" class="form-select">
+          <option value="In Stock">In Stock</option>
+          <option value="Out of Stock">Out of Stock</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="baseprice">Base Price</label>
+        <input type="number" class="form-control" name="baseprice"
+          placeholder="Enter Base Price" required>
+      </div>
+      <div class="col-md-6">
+        <label for="discount">Discount</label>
+        <input type="number" class="form-control" name="discount"
+          placeholder="Enter Discount" value="0" min="0" required>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="color">Color :</label>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Red" name="Red">
+          <label class="form-check-label" for="flexCheckDefault">
+            Red
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Green"
+            name="Green">
+          <label class="form-check-label" for="flexCheckDefault">
+            Green
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Yellow"
+            name="Yellow">
+          <label class="form-check-label" for="flexCheckDefault">
+            Yellow
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Pink"
+            name="Pink">
+          <label class="form-check-label" for="flexCheckDefault">
+            Pink
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="White"
+            name="White">
+          <label class="form-check-label" for="flexCheckDefault">
+            White
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Black"
+            name="Black">
+          <label class="form-check-label" for="flexCheckDefault">
+            Black
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Blue"
+            name="Blue">
+          <label class="form-check-label" for="flexCheckDefault">
+            Blue
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Brown"
+            name="Brown">
+          <label class="form-check-label" for="flexCheckDefault">
+            Brown
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="SkyBlue"
+            name="SkyBlue">
+          <label class="form-check-label" for="flexCheckDefault">
+            SkyBlue
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Orange"
+            name="Orange">
+          <label class="form-check-label" for="flexCheckDefault">
+            Orange
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Navy"
+            name="Navy">
+          <label class="form-check-label" for="flexCheckDefault">
+            Navy
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Gray"
+            name="Gray">
+          <label class="form-check-label" for="flexCheckDefault">
+            Gray
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="row mb-3">
+      <label for="color">Size :</label>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="S" name="S">
+          <label class="form-check-label" for="flexCheckDefault">
+            S
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="SM" name="SM">
+          <label class="form-check-label" for="flexCheckDefault">
+            SM
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="M" name="M">
+          <label class="form-check-label" for="flexCheckDefault">
+            M
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="L" name="L">
+          <label class="form-check-label" for="flexCheckDefault">
+            L
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="XL" name="XL">
+          <label class="form-check-label" for="flexCheckDefault">
+            XL
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="XXL" name="XXL">
+          <label class="form-check-label" for="flexCheckDefault">
+            XXL
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="discription" class="form-label">Discription</label>
+      <textarea name="discription" id cols="30" rows="5"
+        class="form-control">This is Sample Product</textarea>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6 mb-3">
+        <label for="pic1" class="form-label">Pic1</label>
+        <input type="file" class="form-control" name="pic1">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pic2" class="form-label">Pic2</label>
+        <input type="file" class="form-control" name="pic2">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pic3" class="form-label">Pic3</label>
+        <input type="file" class="form-control" name="pic3">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pic4" class="form-label">Pic4</label>
+        <input type="file" class="form-control" name="pic4">
+      </div>
+
+    </div>
+    <button class="btn button">Submit</button>
+  </form>
+</div>
+{% endblock %}
